@@ -1,4 +1,5 @@
-import { fetchWeatherApi } from 'openmeteo';
+// import { fetchWeatherApi } from 'openmeteo';
+const { fetchWeatherApi } = require('openmeteo');
 
 // must pass params as JSON
 async function fetchWeather(params) {
@@ -11,7 +12,6 @@ async function fetchWeather(params) {
 
   // Process first location. Add a for-loop for multiple locations or weather models
   const response = responses[0];
-  console.log(response.current());
 
   // Attributes for timezone and location
   const utcOffsetSeconds = response.utcOffsetSeconds();
@@ -46,7 +46,7 @@ async function fetchWeather(params) {
       sunset: daily.variables(3).valuesArray(),
     },
   };
-  console.log(weatherData);
+  console.log('API response: ', weatherData);
   return weatherData;
 }
 
@@ -69,6 +69,6 @@ const testParams = {
   forecast_days: 1,
 };
 
-console.log(fetchWeather(testParams));
+// console.log(fetchWeather(testParams));
 
 module.exports = fetchWeather;

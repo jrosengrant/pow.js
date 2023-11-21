@@ -1,12 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const { debug } = require('console');
 
 module.exports = {
   mode: 'development',
   entry: './client/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, './build'),
     filename: 'bundle.js',
   },
   devtool: 'source-map',
@@ -18,6 +19,13 @@ module.exports = {
     },
     port: 8080,
     compress: true,
+  },
+  proxy: {
+    '/entries': {
+      target: 'http://localhost:8080',
+      router: () => 'http://localhost:3000',
+      logLevel: 'debug', //optional
+    },
   },
   module: {
     rules: [

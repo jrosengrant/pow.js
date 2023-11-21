@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "name": "test",
+    "latitude": "50",
+    "longitude": "50",
+    "weatherData": {
+      "somestuff": "data"
+    }
+  }
+]

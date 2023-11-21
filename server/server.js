@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const weatherController = require('./weatherController.js');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 // base routes here
 app.use('/build', express.static(path.join(__dirname, '../build')));
@@ -10,9 +12,16 @@ app.get('/', (req, res) => {
 });
 
 // set up get request to /entries to read current locations in the DB
-app.get('/entries', weatherController.getEntries, (req, res) => {
-  return res.status(200).json(res.locals.entriesList);
-});
+app.get(
+  '/entries',
+  () => {
+    console.log('Made it to entries route! Onwards to weatherController!');
+  },
+  weatherController.getEntries,
+  (req, res) => {
+    return res.status(200).json(res.locals.entriesList);
+  }
+);
 
 // set up post request to /locations to create a new location entry and fetch from API
 app.post('/entries', weatherController.createEntry, (req, res) => {
@@ -38,6 +47,15 @@ app.use((err, req, res, next) => {
   return res.status(errObj.status).json(errorObj.message);
 });
 
-app.listen(3000, () => {
+// server listener
+app.listen(3000, async () => {
   console.log('Listening on Port 3000...');
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {});
+    console.log('Connected to Mongo DB.');
+  } catch (error) {
+    console.log(error);
+  }
 });
+
+module.exports = app;

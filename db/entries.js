@@ -1,4 +1,5 @@
 const fs = require('fs');
+// import fs from 'fs';
 const path = require('path');
 
 let writeLocation = path.join(__dirname, './entries.dev.json');

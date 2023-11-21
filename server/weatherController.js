@@ -1,10 +1,13 @@
 const fetchWeather = require('./fetch-weather.js');
-const db = require('../db/entries.js');
+// const db = require('../db/entries.js');
+const Location = require('../mongodb/weatherModel.js');
 
 const weatherController = {};
 
 weatherController.getEntries = (req, res, next) => {
-  const entriesList = db.read();
+  console.log('Made it to the weatherController.getEntries function!');
+  const entriesList = Location.find();
+  console.log('getEntries list: ', entriesList);
   res.locals.entriesList = entriesList;
   return next();
 };
@@ -31,4 +34,4 @@ weatherController.createEntry = async (req, res, next) => {
   }
 };
 
-modules.exports = weatherController;
+module.exports = weatherController;
