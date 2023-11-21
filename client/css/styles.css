@@ -1,0 +1,24 @@
+#main-container {
+  display: block;
+  border: 3px solid lightgray;
+  border-radius: 5px;
+}
+
+* {
+  color: white;
+}
+
+h1 {
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+  background-image: url('../assets/hill-view.gif');
+  /* background-repeat: repeat; */
+}
+
+#create-entry {
+  background-color: lightgrey;
+  color: black;
+}
