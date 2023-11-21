@@ -1,7 +1,7 @@
 import React from 'react';
 import Entry from './Entry.jsx';
 
-const MainContainer = ({ entriesList }) => {
+const MainContainer = ({ entriesList, handleClick }) => {
   let entries = [];
   for (element of entriesList) {
     entries.push(
@@ -22,7 +22,9 @@ const MainContainer = ({ entriesList }) => {
         <br></br>
         <label htmlFor="latitude">Longitude</label>
         <input type="text" name="Longitude"></input>
-        <button id="create-entry">Create new location entry</button>
+        <button id="create-entry" onClick={handleClick}>
+          Create new location entry
+        </button>
         <br></br>
         <label htmlFor="name">Name:</label>
         <input type="text" name="name"></input>

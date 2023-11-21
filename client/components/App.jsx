@@ -5,6 +5,7 @@ import params from '../../db/params.json';
 
 const App = () => {
   const [entriesList, updateEntriesList] = useState([]);
+  const [pingResponse, setPingResponse] = useState('');
 
   // useEffect to GET entries list any time something updates
   useEffect(() => {
@@ -19,32 +20,40 @@ const App = () => {
   });
 
   // button click handler to send POST request
-  // async function handleButtonClick(name, lat, long) {
-  //   // define request body
-  //   const reqBody = {
-  //     name: name,
-  //     latitude: lat,
-  //     longitude: long,
-  //     ...params,
-  //   };
+  async function handleButtonClick(name, lat, long) {
+    fetch('/entries').then((response) => {
+      console.log(response);
+      console.log(response.text());
+    });
 
-  //   console.log(reqBody);
+    // // define request body
+    // const reqBody = {
+    //   name: name,
+    //   latitude: lat,
+    //   longitude: long,
+    //   ...params,
+    // };
 
-  //   const response = await fetch('http://localhost:3000/entries', {
-  //     method: 'POST',
-  //     body: JSON.stringify(reqBody),
-  //     headers: {
-  //       'Access-Control-Allow-Origin': '*',
-  //     },
-  //   });
-  //   const result = await response.json();
-  //   console.log('post result in react app: ', result);
-  // }
+    // console.log(reqBody);
+
+    // const response = await fetch('http://localhost:3000/entries', {
+    //   method: 'POST',
+    //   body: JSON.stringify(reqBody),
+    //   headers: {
+    //     'Access-Control-Allow-Origin': '*',
+    //   },
+    // });
+    // const result = await response.json();
+    // console.log('post result in react app: ', result);
+  }
 
   return (
     <div>
       <span>Testing react App?! It works! Maybe?</span>
-      <MainContainer entriesList={entriesList} />
+      <MainContainer
+        entriesList={entriesList}
+        handleClick={handleButtonClick}
+      />
     </div>
   );
 };

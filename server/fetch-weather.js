@@ -4,6 +4,7 @@ const { fetchWeatherApi } = require('openmeteo');
 // must pass params as JSON
 async function fetchWeather(params) {
   const url = 'https://api.open-meteo.com/v1/forecast';
+  console.log('params in fetchWeather function: ', params);
   const responses = await fetchWeatherApi(url, params);
 
   // Helper function to form time ranges

@@ -5,6 +5,9 @@ const weatherController = require('./weatherController.js');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // base routes here
 app.use('/build', express.static(path.join(__dirname, '../build')));
 app.get('/', (req, res) => {
@@ -14,11 +17,14 @@ app.get('/', (req, res) => {
 // set up get request to /entries to read current locations in the DB
 app.get(
   '/entries',
-  () => {
+  (req, res, next) => {
     console.log('Made it to entries route! Onwards to weatherController!');
+    next();
   },
   weatherController.getEntries,
   (req, res) => {
+    console.log('Made it to the end of the get chain!');
+    console.log('final entriesList: ', res.locals.entriesList);
     return res.status(200).json(res.locals.entriesList);
   }
 );
@@ -44,7 +50,7 @@ app.use((err, req, res, next) => {
     err,
   };
   console.log(err);
-  return res.status(errObj.status).json(errorObj.message);
+  return res.status(errorObj.status).json(errorObj.message);
 });
 
 // server listener
