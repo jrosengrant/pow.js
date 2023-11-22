@@ -1,5 +1,6 @@
 * {
   color: white;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 h1 {
@@ -18,12 +19,21 @@ body {
   border-radius: 5px;
 }
 
-#create-entry {
+#entry-creator {
+  color: black;
+  margin: 10px;
+}
+
+#entry-creator input {
+  color: black;
+}
+
+#create-entry-button {
   background-color: lightgrey;
   color: black;
 }
 
-#entries-container {
+#entry-container {
   display: flex;
 }
 
@@ -32,3 +42,12 @@ body {
   border: 2px solid lightgray;
   border-radius: 5px;
 }
+
+.entry div {
+  margin: 5px;
+}
+
+/* 
+stretch goals: 
+animation where cards will show a snowboarder gif/animation while waiting for fetches
+*/

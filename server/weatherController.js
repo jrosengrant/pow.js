@@ -18,11 +18,16 @@ weatherController.getEntries = (req, res, next) => {
 weatherController.createEntry = async (req, res, next) => {
   try {
     // check request body
-    // console.log('reqbody in weatherController post: ', req.body);
+    console.log('reqbody in weatherController post: ', req.body);
+    if (!Object.keys(req.body).length)
+      return next({
+        log: 'Error: Post request body is empty!',
+        message: 'Error: Post request body is empty!',
+      });
 
     // fetch weatherdata for passed location from openmeteo API and log result
     const weatherData = await fetchWeather(req.body);
-    // console.log('returned weatherData in controller post: ', weatherData);
+    console.log('returned weatherData in controller post: ', weatherData);
 
     // create entry object that will populate mongoDB document
     const entry = {
@@ -45,7 +50,7 @@ weatherController.createEntry = async (req, res, next) => {
   } catch (err) {
     return next({
       log: 'Error in weatherController.createEntry function.',
-      message: { err: `${err}` },
+      message: { err: `${err.message}` },
     });
   }
 };

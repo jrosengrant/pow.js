@@ -26,8 +26,8 @@ if (process.env.NODE_ENV === 'production') {
 
 // set up get request to /entries to read current locations in the DB
 app.get('/entries', weatherController.getEntries, (req, res) => {
-  console.log('Made it to the end of the get chain!');
-  console.log('final entriesList: ', res.locals.entriesList);
+  //   console.log('Made it to the end of the get chain!');
+  //   console.log('final entriesList: ', res.locals.entriesList);
   return res.status(200).json(res.locals.entriesList);
 });
 

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "build": "webpack",
-    "dev": "NODE_ENV=development webpack-dev-server & NODE_ENV=development nodemon server/server.js",
+    "dev": "concurrently --kill-others \"NODE_ENV=development webpack-dev-server --open\" \"NODE_ENV=development nodemon server/server.js\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jesse Rosengrant",

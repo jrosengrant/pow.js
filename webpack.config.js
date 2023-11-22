@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const { debug } = require('console');
 
 module.exports = {
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, './build'),
