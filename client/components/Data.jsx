@@ -24,7 +24,7 @@ const Data = ({ weatherData }) => {
       </li>
     )
   );
-  console.log(current);
+  // console.log(current);
 
   const daily = objectMap(weatherData.current, (stat, index) => (
     <li key={index}>

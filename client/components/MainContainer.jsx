@@ -30,7 +30,6 @@ const MainContainer = ({ entriesList, handleClick, fetchEntries }) => {
             name="Latitude"
             placeholder="Latitude (decimal)"
           ></input>
-          <br></br>
           <label htmlFor="longitude" className="input-label">
             Longitude
           </label>
@@ -40,7 +39,6 @@ const MainContainer = ({ entriesList, handleClick, fetchEntries }) => {
             name="Longitude"
             placeholder="Longitude (decimal)"
           ></input>
-          <br></br>
           <label htmlFor="name" className="input-label">
             Name:
           </label>
@@ -50,7 +48,6 @@ const MainContainer = ({ entriesList, handleClick, fetchEntries }) => {
             name="name"
             placeholder="Location name..."
           ></input>
-          <br></br>
           <button
             id="create-entry-button"
             onClick={() => {
