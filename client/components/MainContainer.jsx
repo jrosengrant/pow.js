@@ -24,12 +24,13 @@ const MainContainer = ({ entriesList, handleClick }) => {
         <br></br>
         <label htmlFor="latitude">Longitude</label>
         <input type="text" name="Longitude"></input>
-        <button id="create-entry" onClick={handleClick}>
-          Create new location entry
-        </button>
         <br></br>
         <label htmlFor="name">Name:</label>
         <input type="text" name="name"></input>
+        <br></br>
+        <button id="create-entry" onClick={handleClick}>
+          Create new location entry
+        </button>
       </div>
       <div id="entries-container">{entries}</div>
     </div>
