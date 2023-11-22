@@ -65,8 +65,32 @@ const MainContainer = ({ entriesList, handleClick, fetchEntries }) => {
           </button>
         </div>
         <div id="user-selection">
-          Test - here is where dropdown menus will go
-          <select name="" id=""></select>
+          Settings
+          <div id="dropdown-container">
+            <div id="temp-container">
+              <label htmlFor="temperature">Temperature</label>
+              <select name="temperature" id="temp-select">
+                <option value="fahrenheit">Fahrenheit °F</option>
+                <option value="celcius">Celcius °C</option>
+              </select>
+            </div>
+            <div id="precip-container">
+              <label htmlFor="precipitation">Precipitation</label>
+              <select name="precipitation" id="precip-select">
+                <option value="inch">Inch</option>
+                <option value="millimeter">Millimeter</option>
+              </select>
+            </div>
+            <div id="windspeed-container">
+              <label htmlFor="windspeed">Wind speed</label>
+              <select name="windspeed" id="windspeed-select">
+                <option value="Mph">Mph</option>
+                <option value="Km/h">Km/h</option>
+                <option value="M/s">M/s</option>
+                <option value="Knots">Knots</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
       <div id="entry-container">{entries}</div>

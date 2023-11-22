@@ -31,7 +31,30 @@ body {
   color: black;
   margin: 10px;
   font-size: 24px;
-  /* display: flex; */
+  display: grid;
+  /* grid-template-columns: 1fr 2fr; */
+}
+
+#user-selection {
+  margin: 25px;
+  font-size: 24px;
+}
+
+#dropdown-container {
+  margin: 20px;
+  font-size: 20px;
+}
+
+#dropdown-container div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#dropdown-container select {
+  /* margin-left: 20px; */
+  color: black;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .input-label {
