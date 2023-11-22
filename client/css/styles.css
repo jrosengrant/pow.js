@@ -10,6 +10,7 @@ h1 {
 
 body {
   background-image: url('../assets/hill-view.gif');
+  background-size: cover;
   /* background-repeat: repeat; */
 }
 
@@ -22,19 +23,30 @@ body {
 #entry-creator {
   color: black;
   margin: 10px;
+  font-size: 24px;
+  /* display: flex; */
+}
+
+.input-label {
+  font-size: 24px;
+  margin-right: 15px;
 }
 
 #entry-creator input {
   color: black;
+  font-size: 24px;
 }
 
 #create-entry-button {
   background-color: lightgrey;
   color: black;
+  font-size: 24px;
 }
 
 #entry-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 5px;
 }
 
 .entry {
@@ -43,8 +55,58 @@ body {
   border-radius: 5px;
 }
 
-.entry div {
+.entry-headers {
+  display: grid;
+  grid-template: auto / repeat(2, 1fr);
+  grid-template-areas: 'top top' 'lat long';
+  text-align: center;
+  font-size: 20px;
+}
+
+.entry-headers div {
   margin: 5px;
+}
+
+.top {
+  grid-area: top;
+  display: flex;
+}
+
+.name {
+  flex: 10;
+}
+.delete-button {
+  height: 30px;
+  width: 30px;
+  background-image: url('../assets/trash-can.png');
+  background-size: cover;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.delete-button:hover {
+  padding: 15px;
+  cursor: pointer;
+  border: 3px solid white;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.latitude {
+  grid-area: lat;
+}
+.longitude {
+  grid-area: long;
+}
+
+.entry-headers {
+  margin: 10px;
+}
+
+.data h4 {
+  margin-left: 15px;
+  margin-top: 10;
 }
 
 /* 

@@ -36,6 +36,11 @@ app.post('/entries', weatherController.createEntry, (req, res) => {
   return res.status(200).json(res.locals.entry);
 });
 
+// set up delete request
+app.delete('/entries', weatherController.deleteEntry, (req, res) => {
+  return res.status(200).json(deleteResponse);
+});
+
 app.get('*', (req, res) => {
   res.status(404).send('Invalid endpoint, file not found.');
 });

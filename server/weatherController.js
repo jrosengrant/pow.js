@@ -55,4 +55,23 @@ weatherController.createEntry = async (req, res, next) => {
   }
 };
 
+weatherController.deleteEntry = async (req, res, next) => {
+  // get name of entry to delete from req body
+  const name = req.body.name;
+
+  try {
+    // delete entry from mongo
+    Location.deleteOne({ name: name }).then((response) => {
+      console.log('mongoose delete response: ', response);
+      res.locals.deleteResponse = response;
+      return next();
+    });
+  } catch (err) {
+    return next({
+      log: 'Error in weatherController.deleteEntry function.',
+      message: { err: `${err.message}` },
+    });
+  }
+};
+
 module.exports = weatherController;

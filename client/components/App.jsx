@@ -10,19 +10,20 @@ const App = () => {
   // consider creating a state variable for which params to pull from the API
   // control params with radio buttons, on click it updates params state var
 
-  // useEffect to GET entries list any time something updates
+  // FETCH --- async function to get entries
+  async function fetchEntries() {
+    const response = await fetch('/entries');
+    const result = await response.json();
+    console.log('GET result in react app: ', result);
+    updateEntriesList(result);
+  }
+
+  // useEffect to GET entries list upon initial load
   useEffect(() => {
-    async function fetchEntries() {
-      // const response = await fetch('http://localhost:3000/entries');
-      const response = await fetch('/entries');
-      const result = await response.json();
-      console.log('GET result in react app: ', result);
-      updateEntriesList(result);
-    }
     fetchEntries();
   }, []);
 
-  // button click handler to send POST request
+  // POST --- button click handler to send POST request
   async function handleButtonClick(name, lat, long) {
     // SIMPLE TEST
     // fetch('http://localhost:3000/entries').then((response) => {
@@ -49,8 +50,12 @@ const App = () => {
       });
       const result = await response.json();
       console.log('post result in react app: ', result);
+      fetchEntries();
     } catch (err) {
-      return new Error('Error: fetch request on button click.');
+      return new Error({
+        log: 'Error: fetch POST request on button click failed.',
+        message: `${err.message}`,
+      });
     }
   }
 
@@ -60,6 +65,7 @@ const App = () => {
       <MainContainer
         entriesList={entriesList}
         handleClick={handleButtonClick}
+        fetchEntries={fetchEntries}
       />
     </div>
   );
