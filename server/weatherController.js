@@ -5,11 +5,11 @@ const Location = require('../mongodb/weatherModel.js');
 const weatherController = {};
 
 weatherController.getEntries = (req, res, next) => {
-  console.log('Made it to the weatherController.getEntries function!');
+  //   console.log('Made it to the weatherController.getEntries function!');
   const entriesList = Location.find({})
     .exec()
     .then((response) => {
-      console.log('getEntries list: ', response);
+      //   console.log('getEntries list: ', response);
       res.locals.entriesList = response;
       return next();
     });
@@ -18,12 +18,11 @@ weatherController.getEntries = (req, res, next) => {
 weatherController.createEntry = async (req, res, next) => {
   try {
     // check request body
-    // console.log('req: ', req);
-    console.log('reqbody in weatherController post: ', req.body);
+    // console.log('reqbody in weatherController post: ', req.body);
 
     // fetch weatherdata for passed location from openmeteo API and log result
     const weatherData = await fetchWeather(req.body);
-    console.log('returned weatherData in controller post: ', weatherData);
+    // console.log('returned weatherData in controller post: ', weatherData);
 
     // create entry object that will populate mongoDB document
     const entry = {
@@ -33,7 +32,7 @@ weatherController.createEntry = async (req, res, next) => {
       weatherData: weatherData,
     };
 
-    console.log('entry in post: ', entry);
+    // console.log('entry in post: ', entry);
     // create document in mongoDB and log response
     // const document = new Location({ entry }).save();
     Location.create(entry).then((response) => {

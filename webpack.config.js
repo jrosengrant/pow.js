@@ -19,12 +19,12 @@ module.exports = {
     },
     port: 8080,
     compress: true,
-  },
-  proxy: {
-    '/entries': {
-      target: 'http://localhost:8080',
-      router: () => 'http://localhost:3000',
-      logLevel: 'debug', //optional
+    proxy: {
+      '/entries': {
+        target: 'http://localhost:8080',
+        router: () => 'http://localhost:3000',
+        logLevel: 'debug', //optional
+      },
     },
   },
   module: {

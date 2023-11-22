@@ -1,4 +1,5 @@
 import React from 'react';
+import Data from './Data.jsx';
 
 const Entry = (props) => {
   const { name, latitude, longitude, weatherData } = props;
@@ -9,7 +10,7 @@ const Entry = (props) => {
       <div className="name">Name: {name}</div>
       <div className="latitude">Latitude: {latitude}</div>
       <div className="longitude">Longitude: {longitude}</div>
-      <div className="weatherData">WeatherData: {weatherData}</div>
+      <Data weatherData={weatherData} />
     </div>
   );
 };

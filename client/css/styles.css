@@ -1,9 +1,3 @@
-#main-container {
-  display: block;
-  border: 3px solid lightgray;
-  border-radius: 5px;
-}
-
 * {
   color: white;
 }
@@ -18,7 +12,23 @@ body {
   /* background-repeat: repeat; */
 }
 
+#main-container {
+  display: block;
+  border: 3px solid lightgray;
+  border-radius: 5px;
+}
+
 #create-entry {
   background-color: lightgrey;
   color: black;
+}
+
+#entries-container {
+  display: flex;
+}
+
+.entry {
+  margin: 10px;
+  border: 2px solid lightgray;
+  border-radius: 5px;
 }

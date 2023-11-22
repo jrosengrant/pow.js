@@ -3,13 +3,15 @@ import Entry from './Entry.jsx';
 
 const MainContainer = ({ entriesList, handleClick }) => {
   let entries = [];
-  for (element of entriesList) {
+  for (let i = 0; i < entriesList.length; i++) {
+    let el = entriesList[i];
     entries.push(
       <Entry
-        name={element.name}
-        latitude={element.latitude}
-        longitude={element.longitude}
-        weatherData={element.weatherData}
+        key={`e${i}`}
+        name={el.name}
+        latitude={el.latitude}
+        longitude={el.longitude}
+        weatherData={el.weatherData}
       />
     );
   }

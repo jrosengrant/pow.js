@@ -4,30 +4,32 @@ const path = require('path');
 const weatherController = require('./weatherController.js');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const cors = require('cors');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: 'http://localhost:8080',
+    credentials: true,
+  })
+);
 
-// base routes here
-app.use('/build', express.static(path.join(__dirname, '../build')));
-app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
-});
+console.log('node env: ', process.env.NODE_ENV);
+// base routes here - for production only
+if (process.env.NODE_ENV === 'production') {
+  app.use('/build', express.static(path.join(__dirname, '../build')));
+  app.get('/', (req, res) => {
+    return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+  });
+}
 
 // set up get request to /entries to read current locations in the DB
-app.get(
-  '/entries',
-  (req, res, next) => {
-    console.log('Made it to entries route! Onwards to weatherController!');
-    next();
-  },
-  weatherController.getEntries,
-  (req, res) => {
-    console.log('Made it to the end of the get chain!');
-    console.log('final entriesList: ', res.locals.entriesList);
-    return res.status(200).json(res.locals.entriesList);
-  }
-);
+app.get('/entries', weatherController.getEntries, (req, res) => {
+  console.log('Made it to the end of the get chain!');
+  console.log('final entriesList: ', res.locals.entriesList);
+  return res.status(200).json(res.locals.entriesList);
+});
 
 // set up post request to /locations to create a new location entry and fetch from API
 app.post('/entries', weatherController.createEntry, (req, res) => {

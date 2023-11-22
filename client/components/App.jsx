@@ -10,22 +10,20 @@ const App = () => {
   // useEffect to GET entries list any time something updates
   useEffect(() => {
     async function fetchEntries() {
-      const response = await fetch('http://localhost:8080/entries');
-      const result = response.json();
+      const response = await fetch('http://localhost:3000/entries');
+      const result = await response.json();
       console.log('GET result in react app: ', result);
       updateEntriesList(result);
     }
-    // fetchEntries();
-    updateEntriesList(entriesList);
-  });
+    fetchEntries();
+  }, []);
 
   // button click handler to send POST request
   async function handleButtonClick(name, lat, long) {
-    fetch('/entries').then((response) => {
-      console.log(response);
-      console.log(response.text());
-    });
-
+    // fetch('http://localhost:3000/entries').then((response) => {
+    //   console.log(response);
+    //   console.log(response.json());
+    // });
     // // define request body
     // const reqBody = {
     //   name: name,
@@ -33,9 +31,7 @@ const App = () => {
     //   longitude: long,
     //   ...params,
     // };
-
     // console.log(reqBody);
-
     // const response = await fetch('http://localhost:3000/entries', {
     //   method: 'POST',
     //   body: JSON.stringify(reqBody),
