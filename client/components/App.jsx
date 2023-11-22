@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import MainContainer from './MainContainer.jsx';
-import params from '../../db/params.json';
+import params from '../params.json';
 
 const App = () => {
   const [entriesList, updateEntriesList] = useState([]);
@@ -9,12 +9,13 @@ const App = () => {
   // temperature, wind speed, precipitation, timezone
   // consider creating a state variable for which params to pull from the API
   // control params with radio buttons, on click it updates params state var
+  const [units, setUnits] = useState({});
 
   // FETCH --- async function to get entries
   async function fetchEntries() {
     const response = await fetch('/entries');
     const result = await response.json();
-    console.log('GET result in react app: ', result);
+    // console.log('GET result in react app: ', result);
     updateEntriesList(result);
   }
 

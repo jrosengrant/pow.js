@@ -15,9 +15,16 @@ body {
 }
 
 #main-container {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   border: 3px solid lightgray;
   border-radius: 5px;
+}
+
+#user-input-container {
+  display: grid;
+  /* grid-template-columns: 1; */
+  grid-template-rows: 1fr 3fr;
 }
 
 #entry-creator {
@@ -74,23 +81,78 @@ body {
 
 .name {
   flex: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+/* ----delete button animation---- */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  /* 50% {
+    transform: translateY(-5px);
+  } */
+  100% {
+    transform: translateY(-5px);
+  }
+}
+.bounce:hover {
+  animation-name: bounce;
+  animation-timing-function: ease;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  transform-origin: bottom;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pulse:hover {
+  animation-name: pulse;
+  animation-timing-function: ease;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+.delete-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.delete-container:hover {
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px 3px lightgray;
+}
+
+.delete-container:hover .delete-button {
+  cursor: pointer;
+  animation-name: pulse;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
 .delete-button {
   height: 30px;
   width: 30px;
   background-image: url('../assets/trash-can.png');
-  background-size: cover;
+  background-size: contain;
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
-}
-
-.delete-button:hover {
-  padding: 15px;
-  cursor: pointer;
-  border: 3px solid white;
-  border-radius: 5px;
-  box-sizing: border-box;
 }
 
 .latitude {

@@ -4,13 +4,23 @@ import Data from './Data.jsx';
 const Entry = (props) => {
   const { name, latitude, longitude, weatherData, fetchEntries } = props;
 
-  async function deleteButtonClick() {
-    const name = { name };
+  async function deleteButtonClick(name) {
+    const confirmation = confirm(
+      `Are you sure you want to delete the location ${name}?`
+    ); // returns true/false
+    if (!confirmation) return; // if user chose cancel, break out of function
+
+    const nameToDelete = { name: name };
+    console.log(JSON.stringify(nameToDelete));
     try {
       const response = await fetch('/entries', {
-        method: 'delete',
-        body: JSON.stringify(name),
+        method: 'DELETE',
+        body: JSON.stringify(nameToDelete),
+        headers: {
+          'Content-type': 'application/json',
+        },
       });
+      console.log('response', response);
       const result = await response.json();
       console.log('delete request response: ', result);
       fetchEntries();
@@ -28,9 +38,16 @@ const Entry = (props) => {
       <div className="entry-headers">
         <div className="top">
           <div className="name">{name}</div>
-          <button className="delete-button">
-            {/* <img src="../assets/trash-can.png"></img> */}
-          </button>
+          <div className="delete-container ">
+            <button
+              className="delete-button "
+              onClick={() => {
+                deleteButtonClick(name);
+              }}
+            >
+              {/* <img src="../assets/trash-can.png"></img> */}
+            </button>
+          </div>
         </div>
         <div className="latitude">
           Latitude: <br></br>
@@ -40,7 +57,6 @@ const Entry = (props) => {
           Longitude: <br></br>
           {longitude} {longitude >= 0 ? 'E' : 'W'}
         </div>
-        <div className="delete-container"></div>
       </div>
       <Data weatherData={weatherData} />
     </div>

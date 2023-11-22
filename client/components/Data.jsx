@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Data = ({ weatherData }) => {
-  console.log(weatherData);
+  //   console.log(weatherData);
 
   //custom function to map an object to an array of list items
   function objectMap(obj, cb) {
@@ -16,7 +16,6 @@ const Data = ({ weatherData }) => {
     return newArr;
   }
 
-  console.log(typeof weatherData.current);
   const current = objectMap(
     weatherData.current,
     (statName, statValue, index) => (
@@ -25,7 +24,7 @@ const Data = ({ weatherData }) => {
       </li>
     )
   );
-  console.log(current);
+  //   console.log(current);
 
   const daily = objectMap(weatherData.current, (stat, index) => (
     <li key={index}>
@@ -35,7 +34,7 @@ const Data = ({ weatherData }) => {
 
   return (
     <div className="data">
-      <h4>Current</h4>
+      <h4>Current Weather Conditions</h4>
       <div className="current-data">
         <ul>{current}</ul>
       </div>

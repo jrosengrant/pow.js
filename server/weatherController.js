@@ -1,5 +1,4 @@
 const fetchWeather = require('./fetch-weather.js');
-// const db = require('../db/entries.js');
 const Location = require('../mongodb/weatherModel.js');
 
 const weatherController = {};
@@ -56,6 +55,8 @@ weatherController.createEntry = async (req, res, next) => {
 };
 
 weatherController.deleteEntry = async (req, res, next) => {
+  console.log('Made it to weatherController.deleteEntry!');
+
   // get name of entry to delete from req body
   const name = req.body.name;
 
