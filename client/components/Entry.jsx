@@ -11,7 +11,7 @@ const Entry = (props) => {
     if (!confirmation) return; // if user chose cancel, break out of function
 
     const nameToDelete = { name: name };
-    console.log(JSON.stringify(nameToDelete));
+    // console.log(JSON.stringify(nameToDelete));
     try {
       const response = await fetch('/entries', {
         method: 'DELETE',
@@ -20,7 +20,7 @@ const Entry = (props) => {
           'Content-type': 'application/json',
         },
       });
-      console.log('response', response);
+      // console.log('response', response);
       const result = await response.json();
       console.log('delete request response: ', result);
       fetchEntries();

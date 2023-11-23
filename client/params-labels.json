@@ -1,0 +1,37 @@
+{
+  "time": {
+    "label": "Time",
+    "unit": "",
+    "cleanFunction": "cleanTime"
+  },
+  "temperature2m": {
+    "label": "Temperature",
+    "unit": "°F",
+    "cleanFunction": "cleanDecimal"
+  },
+  "relativeHumidity2m": {
+    "label": "Relative Humidity",
+    "unit": "%",
+    "cleanFunction": "cleanPercent"
+  },
+  "isDay": {
+    "label": "Daytime",
+    "unit": "",
+    "cleanFunction": "cleanDaytime"
+  },
+  "precipitation": {
+    "label": "Precipitation",
+    "unit": "Inches",
+    "cleanFunction": "cleanDecimal"
+  },
+  "windSpeed10m": {
+    "label": "Wind Speed",
+    "unit": "Mph",
+    "cleanFunction": "cleanDecimal"
+  },
+  "windGusts10m": {
+    "label": "Wind Gusts",
+    "unit": "Mph",
+    "cleanFunction": "cleanDecimal"
+  }
+}

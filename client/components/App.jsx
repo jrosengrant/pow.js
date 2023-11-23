@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import MainContainer from './MainContainer.jsx';
 import params from '../params.json';
+import paramsLabels from '../params-labels.json';
 
 const App = () => {
   const [entriesList, updateEntriesList] = useState([]);
@@ -15,7 +16,7 @@ const App = () => {
   async function fetchEntries() {
     const response = await fetch('/entries');
     const result = await response.json();
-    // console.log('GET result in react app: ', result);
+    console.log('GET result in react app: ', result);
     updateEntriesList(result);
   }
 
@@ -40,7 +41,7 @@ const App = () => {
       ...params,
     };
     try {
-      console.log(JSON.stringify(reqBody));
+      // console.log(JSON.stringify(reqBody));
       const response = await fetch('/entries', {
         method: 'POST',
         body: JSON.stringify(reqBody),
