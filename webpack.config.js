@@ -17,11 +17,11 @@ module.exports = {
       publicPath: '/build',
       directory: path.resolve(__dirname, './build'),
     },
-    port: 8080,
+    port: 8081,
     compress: true,
     proxy: {
       '/entries': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8081',
         router: () => 'http://localhost:3000',
         logLevel: 'debug', //optional
       },

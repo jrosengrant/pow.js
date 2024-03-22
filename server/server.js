@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: 'http://localhost:8080',
+    origin: 'http://localhost:8081',
     credentials: true,
   })
 );
@@ -40,7 +40,6 @@ app.post('/entries', weatherController.createEntry, (req, res) => {
 app.delete(
   '/entries',
   (req, res, next) => {
-    console.log('made it to server delete route!');
     return next();
   },
   weatherController.deleteEntry,

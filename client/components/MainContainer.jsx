@@ -40,7 +40,7 @@ const MainContainer = ({ entriesList, handleClick, fetchEntries }) => {
             placeholder="Longitude (decimal)"
           ></input>
           <label htmlFor="name" className="input-label">
-            Name:
+            Name
           </label>
           <input
             type="text"
