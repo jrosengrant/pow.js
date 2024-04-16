@@ -8,7 +8,7 @@ weatherController.getEntries = (req, res, next) => {
   const entriesList = Location.find({})
     .exec()
     .then((response) => {
-      //   console.log('getEntries list: ', response);
+      console.log('getEntries list: ', response);
       res.locals.entriesList = response;
       return next();
     });

@@ -172,7 +172,7 @@ input {
 .pulse:hover {
   animation-name: pulse;
   animation-timing-function: ease;
-  animation-duration: 1.5s;
+  animation-duration: 0.7s;
   animation-iteration-count: infinite;
 }
 
@@ -181,6 +181,7 @@ input {
   justify-content: center;
   align-items: center;
   padding: 5px;
+  transition: all 0.3s ease-in-out;
 }
 
 .delete-container:hover {
@@ -205,6 +206,7 @@ input {
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
+  transition: all 0.3s ease-out;
 }
 
 .latitude {
